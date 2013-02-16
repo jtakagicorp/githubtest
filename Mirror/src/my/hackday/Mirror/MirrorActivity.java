@@ -6,6 +6,9 @@ import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MirrorActivity extends Activity implements OnClickListener {
     /** Called when the activity is first created. */	
@@ -35,5 +38,8 @@ public class MirrorActivity extends Activity implements OnClickListener {
     		default:
     			break;
     	}
+    	Pusher pusher = new Pusher();
+    	pusher.getRequest("post", "value");
+    	Log.i("debug","pusher");
     }
 }
