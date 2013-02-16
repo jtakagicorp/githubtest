@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MirrorActivity extends Activity implements OnClickListener {
     /** Called when the activity is first created. */	
@@ -15,8 +15,8 @@ public class MirrorActivity extends Activity implements OnClickListener {
         setContentView(R.layout.main);
         
         // ボタンにクリックイベントをつける
-        Button lightButton = (Button) findViewById(R.id.light_button);
-        Button soundButton = (Button) findViewById(R.id.sound_button);
+        ImageButton lightButton = (ImageButton) findViewById(R.id.light_button);
+        ImageButton soundButton = (ImageButton) findViewById(R.id.sound_button);
         lightButton.setOnClickListener(this);
         soundButton.setOnClickListener(this);
     }

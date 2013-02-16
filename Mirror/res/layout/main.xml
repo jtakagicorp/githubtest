@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
+    android:background="#000E37"
     >
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/mirror_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello"
+        android:src="@drawable/partyhack"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
         />
 	<LinearLayout
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
-    	android:gravity="center"
+    	android:layout_below="@+id/mirror_title"
     	>
-    	<Button
+    	<ImageButton
         	android:id="@+id/light_button"
         	android:layout_width="0dp"
 			android:layout_height="wrap_content"
+			android:background="@drawable/button_hikari"
 			android:layout_weight="1"
 			android:text="@string/light_name"
         	/>
-    	<Button
+    	<ImageButton
         	android:id="@+id/sound_button"
         	android:layout_width="0dp"
 			android:layout_height="wrap_content"
+			android:background="@drawable/button_oto"
 			android:layout_weight="1"
 			android:text="@string/sound_name"
         	/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
