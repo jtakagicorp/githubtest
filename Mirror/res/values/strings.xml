@@ -4,4 +4,6 @@
     <string name="hello">Hello World, MirrorActivity!</string>
     <string name="app_name">Mirror</string>
 
+    <string name="light_name">光</string>
+    <string name="sound_name">音</string>
 </resources>

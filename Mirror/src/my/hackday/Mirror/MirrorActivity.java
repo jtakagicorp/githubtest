@@ -1,6 +1,7 @@
 package my.hackday.Mirror;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,23 @@ public class MirrorActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        Button changeColorButton = (Button) findViewById(R.id.change_color_button);
-        changeColorButton.setOnClickListener(this);
+        // ボタンにクリックイベントをつける
+        Button lightButton = (Button) findViewById(R.id.light_button);
+        Button soundButton = (Button) findViewById(R.id.sound_button);
+        lightButton.setOnClickListener(this);
+        soundButton.setOnClickListener(this);
     }
     
     public void onClick(View view) {
+    	Intent intent;
     	switch (view.getId()) {
-    		case R.id.change_color_button:
+    		case R.id.light_button:
+    			intent = new Intent(this, LightActivity.class);
+    			startActivity(intent);
+    			break;
+    		case R.id.sound_button:
+    			intent = new Intent(this, SoundActivity.class);
+    			startActivity(intent);
     			break;
     		default:
     			break;
