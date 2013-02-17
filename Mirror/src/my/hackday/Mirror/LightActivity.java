@@ -7,12 +7,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class LightActivity extends Activity implements OnClickListener {
 	private SampleView mView;
@@ -29,12 +33,12 @@ public class LightActivity extends Activity implements OnClickListener {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.light);
+        //setContentView(R.layout.light);
         
         // TODO: 画像変更
         mBitmap = BitmapFactory.decodeResource(getResources(), 
                 R.drawable.ic_launcher);
-        mView = new SampleView(this);
+        mView = new SampleView(this, null);
         setContentView(mView);
         
         mHandler = new Handler();
@@ -45,11 +49,24 @@ public class LightActivity extends Activity implements OnClickListener {
         private float imageX = 0f;
         private float imageY = 0f;
 
-        public SampleView(Context context) {
-            super(context);
+        public SampleView(Context context, AttributeSet attrs) {
+            super(context, attrs);
             mPaint = new Paint();
+            ImageView imgView = new ImageView(context, attrs);
+            
+            LinearLayout linearLayout = new LinearLayout(context);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
+            layout.weight = 1;
+            linearLayout.addView(imgView, layout);
         }
 
+    	@Override
+    	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+    		setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+    	}
+    	
         @Override
         protected void onDraw(Canvas canvas) {
         	//canvasのカラー
@@ -85,7 +102,7 @@ public class LightActivity extends Activity implements OnClickListener {
             	mView.startAnimation(scale);
             	*/
                 // 1秒かけて上に移動
-                TranslateAnimation translate = new TranslateAnimation(0, 0, 0, -700);
+                TranslateAnimation translate = new TranslateAnimation(0, 0, 0, -800);
                 translate.setDuration(1000);
             	mView.startAnimation(translate);
             	
@@ -97,9 +114,11 @@ public class LightActivity extends Activity implements OnClickListener {
             }
             //触ったままスライド
             else if(event.getAction() == MotionEvent.ACTION_MOVE){
+            	// 何もしない
             }
             //離す
             else if(event.getAction() == MotionEvent.ACTION_UP){
+            	// 何もしない
             }
             // 再描画の指示
             invalidate();

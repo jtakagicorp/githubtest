@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/light_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    android:gravity="center"
     >
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/color_table_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+    	>
+        <ImageView
+            android:id="@+id/color_table_01"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_01"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/color_table_02"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_02"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/color_table_03"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_03"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/color_table_04"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_04"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/color_table_05"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_05"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/color_table_06"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_06"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:id="@+id/color_table_07"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/hikari_07"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/touch_event_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        >
+        <my.hackday.Mirror.LightActivity
+            xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:focusable="true"
+			android:clickable="true"
+			/>
+    </LinearLayout>
+</RelativeLayout>
