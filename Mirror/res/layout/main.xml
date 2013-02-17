@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mirror_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#000E37"
     >
-    <ImageView
-        android:id="@+id/mirror_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/partyhack"
-        android:scaleType="fitXY"
-        android:layout_alignParentTop="true"
-        />
+    <ViewFlipper
+		android:id="@+id/ViewFlipper"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		>
+		<ImageView
+			android:id="@+id/ImageView01"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:background="@drawable/musicbackc"
+			/>
+		<ImageView
+			android:id="@+id/ImageView02"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:background="@drawable/musicbackm"
+			/>
+		<ImageView
+			android:id="@+id/ImageView03"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:background="@drawable/musicbacko"
+			/>
+		<ImageView
+			android:id="@+id/ImageView04"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:background="@drawable/musicbackg"
+			/>
+	</ViewFlipper>
     <ImageButton
     	android:id="@+id/sound_button"
-        android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@drawable/button_oto"
+        android:layout_width="fill_parent"
+		android:layout_height="200dp"
+		android:background="@drawable/sound_btn"
+		android:adjustViewBounds="true"
 		android:layout_centerInParent="true"
         />
 </RelativeLayout>
