@@ -9,7 +9,7 @@
     	android:id="@+id/active_layout"
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
-    	android:visibility="visible"
+    	android:visibility="gone"
     	>
     	<!-- 各色背景 -->
     	<ViewFlipper
@@ -84,7 +84,6 @@
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
     	android:background="#000E37"
-    	android:visibility="gone"
     	>
     	<ImageView
         	android:layout_width="fill_parent"
