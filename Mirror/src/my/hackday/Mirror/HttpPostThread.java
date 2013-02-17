@@ -31,7 +31,7 @@ public class HttpPostThread implements Runnable {
 	
 	public void run() {
 		// TODO Auto-generated method stub
-		String line = null;
+		//String line = null;
 		try {
 			URL url = new URL(POSTURL);
 			HttpURLConnection urlCon = (HttpURLConnection)url.openConnection();
@@ -42,16 +42,14 @@ public class HttpPostThread implements Runnable {
 			ps.print(postData);
 			ps.close();
 			
-			InputStream in = urlCon.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String tmp = null;
-			while((tmp = br.readLine()) != null) {
-				Log.e("response", tmp);
-			}
+			//InputStream in = urlCon.getInputStream();
+			//BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			//String tmp = null;
+			//while((tmp = br.readLine()) != null) {
+			//	Log.e("response", tmp);
+			//}
 			
 			Log.i("debun", "success");
-			Log.e("debun", POSTKEY + " * " + json.toString());
-			Log.e("andrid", "status :"+urlCon.getResponseCode());
 		} catch (Exception e) {
 			Log.i("error", e.getMessage());
 			e.getStackTrace();
