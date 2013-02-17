@@ -152,16 +152,18 @@ public class MirrorActivity extends Activity implements OnClickListener {
         			viewFlipper.setInAnimation(inFromLeftAnimation);
         		    viewFlipper.setOutAnimation(outToRightAnimation);
         		    viewFlipper.showPrevious();
-        		    
-        		    mPusher.getRequest("swipe", String.valueOf(mColorNum));
+
         		    mColorNum --;
+        		    if (mColorNum < 1) mColorNum = 4;
+        		    mPusher.getRequest("swipe", String.valueOf(mColorNum));
                 } else {
         			viewFlipper.setInAnimation(inFromRightAnimation);
         		    viewFlipper.setOutAnimation(outToLeftAnimation);
                     viewFlipper.showNext();
-                    
-         		    mPusher.getRequest("swipe", String.valueOf(mColorNum));
+
          		    mColorNum ++;
+         		    if (mColorNum > 4) mColorNum = 1;
+         		    mPusher.getRequest("swipe", String.valueOf(mColorNum));
                 }
             }
 		    
