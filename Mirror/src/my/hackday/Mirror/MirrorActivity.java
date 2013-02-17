@@ -1,38 +1,29 @@
 package my.hackday.Mirror;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.util.Log;
-import android.widget.Button;
 
 public class MirrorActivity extends Activity implements OnClickListener {
     /** Called when the activity is first created. */	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         
         // ボタンにクリックイベントをつける
-        ImageButton lightButton = (ImageButton) findViewById(R.id.light_button);
         ImageButton soundButton = (ImageButton) findViewById(R.id.sound_button);
-        lightButton.setOnClickListener(this);
         soundButton.setOnClickListener(this);
     }
     
     public void onClick(View view) {
-    	Intent intent;
     	switch (view.getId()) {
-    		case R.id.light_button:
-    			intent = new Intent(this, LightActivity.class);
-    			startActivity(intent);
-    			break;
     		case R.id.sound_button:
-    			intent = new Intent(this, SoundActivity.class);
-    			startActivity(intent);
+    			// 音楽を鳴らす
     			break;
     		default:
     			break;

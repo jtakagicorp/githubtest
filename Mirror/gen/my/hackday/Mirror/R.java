@@ -22,27 +22,15 @@ public final class R {
         public static final int hikari_07=0x7f020008;
         public static final int ic_launcher=0x7f020009;
         public static final int partyhack=0x7f02000a;
+        public static final int sound_default=0x7f02000b;
+        public static final int sound_pressed=0x7f02000c;
     }
     public static final class id {
-        public static final int change_sound_button=0x7f05000d;
-        public static final int color_table_01=0x7f050002;
-        public static final int color_table_02=0x7f050003;
-        public static final int color_table_03=0x7f050004;
-        public static final int color_table_04=0x7f050005;
-        public static final int color_table_05=0x7f050006;
-        public static final int color_table_06=0x7f050007;
-        public static final int color_table_07=0x7f050008;
-        public static final int color_table_layout=0x7f050001;
-        public static final int light_button=0x7f05000b;
-        public static final int light_layout=0x7f050000;
-        public static final int mirror_title=0x7f05000a;
-        public static final int sound_button=0x7f05000c;
-        public static final int touch_event_layout=0x7f050009;
+        public static final int mirror_title=0x7f050000;
+        public static final int sound_button=0x7f050001;
     }
     public static final class layout {
-        public static final int light=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int sound=0x7f030002;
+        public static final int main=0x7f030000;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
