@@ -1,5 +1,7 @@
 package my.hackday.Mirror;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -13,6 +15,9 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ViewFlipper;
 
@@ -31,6 +36,11 @@ public class MirrorActivity extends Activity implements OnClickListener {
 	Animation outToRightAnimation;
 	Animation outToLeftAnimation;
   
+	private SensorManager manager;
+	private ShakeHandler shake;
+	private Pusher pusher;
+	
+    /** Called when the activity is first created. */	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +55,11 @@ public class MirrorActivity extends Activity implements OnClickListener {
         mSoundButton.setOnClickListener(this);
         
         setAnimations();
+
+        pusher = new Pusher();
+        manager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        shake = new ShakeHandler(pusher);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     
 	protected void setAnimations() {    
@@ -123,4 +138,24 @@ public class MirrorActivity extends Activity implements OnClickListener {
             return super.onSingleTapConfirmed(event); 
         }
     };
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		List<Sensor> sensors = manager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+		if (sensors.size() > 0) {
+			Sensor s = sensors.get(0);
+			manager.registerListener(shake, s, SensorManager.SENSOR_DELAY_NORMAL);
+		}
+	}
+
+
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		manager.unregisterListener(shake);
+	}
 }
