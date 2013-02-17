@@ -42,12 +42,12 @@ public class HttpPostThread implements Runnable {
 			ps.print(postData);
 			ps.close();
 			
-			//InputStream in = urlCon.getInputStream();
-			//BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			//String tmp = null;
-			//while((tmp = br.readLine()) != null) {
-			//	Log.e("response", tmp);
-			//}
+			InputStream in = urlCon.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String tmp = null;
+			while((tmp = br.readLine()) != null) {
+				Log.e("response", tmp);
+			}
 			
 			Log.i("debun", "success");
 		} catch (Exception e) {
