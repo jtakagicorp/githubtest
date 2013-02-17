@@ -35,10 +35,10 @@ public class ShakeHandler implements SensorEventListener {
 			float score =  norm(new_x, new_y, new_z);//1 - Math.abs(cosine(x, new_x, y, new_y, z, new_z));
 			if (score > THRESHOLD_BIG) {
 				Log.e("arndorid", String.valueOf(score) + " over "); 
-				//pusher.getRequest(SHAKEKEY, SENDVAL_BIG);
+				pusher.getRequest(SHAKEKEY, SENDVAL_BIG);
 			} else if (score > THRESHOLD) {
 				Log.e("arndorid", String.valueOf(score)); 
-				//pusher.getRequest(SHAKEKEY, SENDVAL);
+				pusher.getRequest(SHAKEKEY, SENDVAL);
 			}
 			x = new_x;
 			y = new_y;
