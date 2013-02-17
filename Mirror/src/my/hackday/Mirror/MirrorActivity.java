@@ -80,13 +80,15 @@ public class MirrorActivity extends Activity implements OnClickListener {
 
         // バブルアニメーション
         ImageView bubble = (ImageView) findViewById(R.id.animation_view);
-        mADrawable = (AnimationDrawable) bubble.getBackground();
-        mADrawable.start();
+        bubble.post(new Starter((AnimationDrawable) bubble.getBackground()));
+        //mADrawable = (AnimationDrawable) bubble.getBackground();
+        //mADrawable.start();
         
         // ラインアニメーション
         ImageView lineAnime = (ImageView) findViewById(R.id.line_animation);
-        mLineADrawable = (AnimationDrawable) lineAnime.getBackground();
-        mLineADrawable.start();
+        lineAnime.post(new Starter((AnimationDrawable) lineAnime.getBackground()));
+        //mLineADrawable = (AnimationDrawable) lineAnime.getBackground();
+        //mLineADrawable.start();
 
         pusher = new Pusher();
         manager = (SensorManager)getSystemService(SENSOR_SERVICE);
@@ -195,5 +197,15 @@ public class MirrorActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onStop();
 		manager.unregisterListener(shake);
+	}
+	
+	class Starter implements Runnable {
+	    AnimationDrawable mAnimation;
+	    public Starter (AnimationDrawable a){
+	        mAnimation = a;
+	    }
+	    public void run() {
+	        mAnimation.start();
+	    }
 	}
 }
