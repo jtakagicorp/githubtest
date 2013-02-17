@@ -6,6 +6,8 @@ import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.util.Log;
+import android.widget.Button;
 
 public class MirrorActivity extends Activity implements OnClickListener {
     /** Called when the activity is first created. */	
