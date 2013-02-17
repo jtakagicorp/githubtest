@@ -1,2 +1,0 @@
-INDEX VERSION 1.126+/Users/takagijun/github/githubtest/.metadata/.plugins/org.eclipse.jdt.core
-1229990356.index
