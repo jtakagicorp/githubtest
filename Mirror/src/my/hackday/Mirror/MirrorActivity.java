@@ -9,16 +9,20 @@ import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
 import my.hackday.Mirror.Pusher;
@@ -29,6 +33,19 @@ public class MirrorActivity extends Activity implements OnClickListener {
 	
 	private int mColorNum = 1;
 	private ImageButton mSoundButton = null;
+	private AnimationDrawable mADrawable;
+	private AnimationDrawable mLineADrawable;
+	
+	private RelativeLayout mLoadView = null;
+	private RelativeLayout mActiveView = null;
+	
+	private Handler mHandler = null;
+	private Runnable mChangeView = new Runnable() {
+    	public void run() {
+    		mLoadView.setVisibility(View.GONE);
+    		mActiveView.setVisibility(View.VISIBLE);
+    	}
+    };
 	
 	ViewFlipper viewFlipper;
 	Animation inFromRightAnimation;
@@ -47,19 +64,38 @@ public class MirrorActivity extends Activity implements OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         
+        mLoadView = (RelativeLayout) findViewById(R.id.loading_layout);
+        mActiveView = (RelativeLayout) findViewById(R.id.active_layout);
+        
         mGestureDetector = new GestureDetector(this, simpleOnGestureListener);
         mPusher = new Pusher();
         
+        // 各色画面
         viewFlipper = (ViewFlipper) findViewById(R.id.ViewFlipper);
+        setAnimations();
+        
+        // SEボタン
         mSoundButton = (ImageButton) findViewById(R.id.sound_button);
         mSoundButton.setOnClickListener(this);
+
+        // バブルアニメーション
+        ImageView bubble = (ImageView) findViewById(R.id.animation_view);
+        mADrawable = (AnimationDrawable) bubble.getBackground();
+        mADrawable.start();
         
-        setAnimations();
+        // ラインアニメーション
+        ImageView lineAnime = (ImageView) findViewById(R.id.line_animation);
+        mLineADrawable = (AnimationDrawable) lineAnime.getBackground();
+        mLineADrawable.start();
 
         pusher = new Pusher();
         manager = (SensorManager)getSystemService(SENSOR_SERVICE);
         shake = new ShakeHandler(pusher);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        
+        // 2秒後に画面切り替え
+        mHandler = new Handler();
+    	mHandler.postDelayed(mChangeView, 2000);
     }
     
 	protected void setAnimations() {    
