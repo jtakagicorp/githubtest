@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class ShakeHandler implements SensorEventListener {
 	private static final float THRESHOLD = 19.0f;
-	private static final float THRESHOLD_BIG = 30.0f;
+	private static final float THRESHOLD_BIG = 34.0f;
 	private static final String SENDVAL = "1";
 	private static final String SENDVAL_BIG = "2";
 	private static final String SHAKEKEY = "shake";
